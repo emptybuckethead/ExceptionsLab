@@ -22,6 +22,8 @@ public class Employee {
     private String lastName;
     private String ssn;
     private int daysVacation;
+    private final int MAX_CHAR = 31;
+    private final int MIN_CHAR = 1;
 
     public Employee() {
         // initialize a bunch of default values
@@ -35,41 +37,50 @@ public class Employee {
         setFirstName(firstName);
         setLastName(lastName);
         setSsn(ssn);
+        setDaysVacation(daysVacation);
+    }
+    
+    public final int getDaysVacation() {
+        return daysVacation;
+    }
+    //days vacation must be between 1-31 
+    public final void setDaysVacation(int daysVacation) {
+        if(daysVacation > MAX_CHAR || daysVacation < MIN_CHAR){
+            throw new IllegalArgumentException("you must take at least 1 vacation day but no more than 31");
+        }
         this.daysVacation = daysVacation;
     }
     
-    public int getDaysVacation() {
-        return daysVacation;
-    }
-
-    public void setDaysVacation(int daysVacation) {
-        this.daysVacation = daysVacation;
-    }
-
-    public String getFirstName() {
+    public final String getFirstName() {
         return firstName;
     }
-
+    //FirstName cannot be null, empty or use stupid aschii characters that your hippy mom used to name you, min and max
     public final void setFirstName(String firstName) {
-       
+        if(firstName.isEmpty() ||  firstName.length() < MIN_CHAR || firstName.length() > MAX_CHAR){
+            throw new IllegalArgumentException("invalid first name, cannot be more than 31 or less than 1");
+        }
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public final String getLastName() {
         return lastName;
     }
-
-    public void setLastName(String lastName) {
-        
+    //lastName cannot empty or contain stupid aschii characters that your hippy mom used to name you, min and max
+    public final void setLastName(String lastName) {
+        if(lastName.isEmpty() ||  lastName.length() < MIN_CHAR || lastName.length() > MAX_CHAR){
+            throw new IllegalArgumentException("invalid last name, cannot be more than 31 or less than 1");
+        }
         this.lastName = lastName;
     }
 
     public final String getSsn() {
         return ssn;
     }
-
-    public void setSsn(String ssn) {
-        
+    //ssn cannot be null, contian 9 numbers, cannot be empty
+    public final void setSsn(String ssn) {
+//        if(ssn == null || ssn > 9 || ssn < 9 || ssn.isEmpty()){
+//            throw new IllegalArgumentException("invalid SSN");
+//        }
         this.ssn = ssn;
     }
     

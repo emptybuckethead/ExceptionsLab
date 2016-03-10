@@ -14,6 +14,6 @@ public class Startup {
         String fullNameInCaps = 
                 emp.getFirstName().toUpperCase() 
                 + " " + emp.getLastName().toUpperCase();
-        
+        System.out.println(emp.getFirstName() + " " + emp.getLastName() + ", " + emp.getSsn() + ", " + emp.getDaysVacation() + "vacation days");
     }
 }
