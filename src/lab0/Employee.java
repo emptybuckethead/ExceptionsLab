@@ -17,7 +17,7 @@ package lab0;
  * @version 1.00
  */
 public class Employee {
-    public static final int MAX_VACATION_DAYS = 28;
+    public static final int MAX_VACATION_DAYS = 15;
     private String firstName;
     private String lastName;
     private String ssn;
@@ -43,9 +43,9 @@ public class Employee {
     public final int getDaysVacation() {
         return daysVacation;
     }
-    //days vacation must be between 1-31 
+    //days vacation must be between 1-31, and cannot be negative 
     public final void setDaysVacation(int daysVacation) {
-        if(daysVacation > MAX_CHAR || daysVacation < MIN_CHAR){
+        if(daysVacation > MAX_VACATION_DAYS || daysVacation < MIN_CHAR || daysVacation >= 0){
             throw new IllegalArgumentException("you must take at least 1 vacation day but no more than 31");
         }
         this.daysVacation = daysVacation;

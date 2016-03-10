@@ -20,10 +20,17 @@ public class NameService {
      */
     public String extractLastName(String fullName) {
         String lastName = null;
+        String[] names = null;
         
-        // put your code here
+        if(fullName == null || fullName.isEmpty() || fullName.split(" ").length < 2 ){
+            throw new IllegalArgumentException("sorry, full name must contain both first and last name");
+        }
+        
+        names = fullName.split(" ");
+        lastName = names[names.length -1];
         
         return lastName;
+
     }
     
 }

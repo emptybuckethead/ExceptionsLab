@@ -22,9 +22,16 @@ public class Challenge1 {
         Challenge1 app = new Challenge1();
         
         String fullName = JOptionPane.showInputDialog("Enter full name (use Format: first last):");
-        String lastName = app.extractLastName(fullName);
-        String msg = "Your last name is: " + lastName;
-        JOptionPane.showMessageDialog(null, msg);
+        String lastName = null;
+        
+        try{
+            lastName = app.extractLastName(fullName);
+            String msg = "I think... Your last name is: " + lastName;
+            JOptionPane.showMessageDialog(null, msg);    
+        } catch(IllegalArgumentException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        
     }
     
     // write the code to extract the lastName from the fullName
@@ -33,8 +40,14 @@ public class Challenge1 {
     // it there.
     public String extractLastName(String fullName) {
         String lastName = null;
+        String[] names = null;
         
-        // Your code goes here. Assign your value to lastName
+        if(fullName == null || fullName.isEmpty() || fullName.split(" ").length < 2 ){
+            throw new IllegalArgumentException("sorry, full name must contain both first and last name");
+        }
+        
+        names = fullName.split(" ");
+        lastName = names[names.length -1];
         
         return lastName;
     }
